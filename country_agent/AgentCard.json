@@ -1,0 +1,135 @@
+{
+  "name": "country_agent",
+  "description": "An agent that provides information about the country",
+  "supportedInterfaces": [
+    {
+      "url": "http://localhost:8001",
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0"
+    }
+  ],
+  "version": "0.0.1",
+  "capabilities": {
+    "streaming": true
+  },
+  "defaultInputModes": [
+    "text/plain"
+  ],
+  "defaultOutputModes": [
+    "text/plain"
+  ],
+  "skills": [
+    {
+      "id": "country_agent",
+      "name": "model",
+      "description": "An agent that provides information about the country",
+      "tags": [
+        "llm"
+      ]
+    },
+    {
+      "id": "country_agent-get_country_info",
+      "name": "get_country_info",
+      "description": "Fetches specific information (capital, languages, flag details, maps,\npopulation, and capital coordinates) for a given country name\nusing the REST Countries API.",
+      "tags": [
+        "llm",
+        "tools"
+      ]
+    },
+    {
+      "id": "country_agent-get_current_date",
+      "name": "get_current_date",
+      "description": "Retrieves the current date, time, and timezone information at the moment\nthe function is executed.",
+      "tags": [
+        "llm",
+        "tools"
+      ]
+    },
+    {
+      "id": "country_agent-get_exchange_rate",
+      "name": "get_exchange_rate",
+      "description": "Retrieves the exchange rate between two currencies for a specified date.\nUses the Frankfurter API (https://api.frankfurter.app/) to fetch exchange rate data.\nArgs:\ncurrency_from: Base currency (3-letter currency code). The default is \"USD\" (US Dollar).\ncurrency_to: Target currency (3-letter currency code). The default is \"KRW\" (Korean Won).\ncurrency_date: Date to query the exchange rate for. Default is \"latest\" for the most recent rate.\nFor historical rates, specify in YYYY-MM-DD format.\nReturns:\ndict: A dictionary containing exchange rate information.\nExample: {\"amount\": 1.0, \"base\": \"USD\", \"date\": \"2023–11–24\", \"rates\": {\"EUR\": 0.95534}}",
+      "tags": [
+        "llm",
+        "tools"
+      ]
+    },
+    {
+      "id": "country_agent-get_public_holidays",
+      "name": "get_public_holidays",
+      "description": "Fetches the list of public holidays for a specified year and country\nand returns their local and English names.",
+      "tags": [
+        "llm",
+        "tools"
+      ]
+    },
+    {
+      "id": "country_agent-get_weather_forecast",
+      "name": "get_weather_forecast",
+      "description": "Returns the daily maximum and minimum temperature forecasts for the specified\nlocation and weather model using the Open-Meteo API.\n\nNOTE: The 'latitude' and 'longitude' parameters are REQUIRED.",
+      "tags": [
+        "llm",
+        "tools"
+      ]
+    },
+    {
+      "id": "exchange_agent_exchange_agent",
+      "name": "exchange_agent: model",
+      "description": "An agent that gives information about the exchange rates",
+      "tags": [
+        "sub_agent:exchange_agent",
+        "llm"
+      ]
+    },
+    {
+      "id": "exchange_agent_exchange_agent-get_country_info",
+      "name": "exchange_agent: get_country_info",
+      "description": "Fetches specific information (capital, languages, flag details, maps,\npopulation, and capital coordinates) for a given country name\nusing the REST Countries API.",
+      "tags": [
+        "sub_agent:exchange_agent",
+        "llm",
+        "tools"
+      ]
+    },
+    {
+      "id": "exchange_agent_exchange_agent-get_current_date",
+      "name": "exchange_agent: get_current_date",
+      "description": "Retrieves the current date, time, and timezone information at the moment\nthe function is executed.",
+      "tags": [
+        "sub_agent:exchange_agent",
+        "llm",
+        "tools"
+      ]
+    },
+    {
+      "id": "exchange_agent_exchange_agent-get_exchange_rate",
+      "name": "exchange_agent: get_exchange_rate",
+      "description": "Retrieves the exchange rate between two currencies for a specified date.\nUses the Frankfurter API (https://api.frankfurter.app/) to fetch exchange rate data.\nArgs:\ncurrency_from: Base currency (3-letter currency code). The default is \"USD\" (US Dollar).\ncurrency_to: Target currency (3-letter currency code). The default is \"KRW\" (Korean Won).\ncurrency_date: Date to query the exchange rate for. Default is \"latest\" for the most recent rate.\nFor historical rates, specify in YYYY-MM-DD format.\nReturns:\ndict: A dictionary containing exchange rate information.\nExample: {\"amount\": 1.0, \"base\": \"USD\", \"date\": \"2023–11–24\", \"rates\": {\"EUR\": 0.95534}}",
+      "tags": [
+        "sub_agent:exchange_agent",
+        "llm",
+        "tools"
+      ]
+    },
+    {
+      "id": "exchange_agent_exchange_agent-get_public_holidays",
+      "name": "exchange_agent: get_public_holidays",
+      "description": "Fetches the list of public holidays for a specified year and country\nand returns their local and English names.",
+      "tags": [
+        "sub_agent:exchange_agent",
+        "llm",
+        "tools"
+      ]
+    },
+    {
+      "id": "exchange_agent_exchange_agent-get_weather_forecast",
+      "name": "exchange_agent: get_weather_forecast",
+      "description": "Returns the daily maximum and minimum temperature forecasts for the specified\nlocation and weather model using the Open-Meteo API.\n\nNOTE: The 'latitude' and 'longitude' parameters are REQUIRED.",
+      "tags": [
+        "sub_agent:exchange_agent",
+        "llm",
+        "tools"
+      ]
+    }
+  ]
+}

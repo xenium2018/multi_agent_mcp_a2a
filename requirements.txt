@@ -1,0 +1,7 @@
+google-adk
+google-adk[a2a]
+python-dotenv
+openmeteo-requests
+pandas
+requests
+fastmcp
